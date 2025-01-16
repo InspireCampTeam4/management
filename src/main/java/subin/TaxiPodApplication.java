@@ -47,7 +47,6 @@ public class TaxiPodApplication {
                     break;
                 case 7:
                     System.out.println("프로그램을 종료합니다.");
-                    scanner.close();
                     return;
                 default:
                     System.out.println("잘못된 입력입니다.");

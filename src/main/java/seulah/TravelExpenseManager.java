@@ -5,6 +5,7 @@ import seulah.models.Member;
 
 import java.time.LocalDate;
 import java.util.*;
+import java.util.stream.Collectors;
 
 public class TravelExpenseManager {
     private Map<String, Member> members = new HashMap<>(); // 참가자 정보
@@ -17,17 +18,30 @@ public class TravelExpenseManager {
             scanner.nextLine();
 
             switch (choice) {
-                case 1 -> addMember(scanner);           // 참가자 등록
-                case 2 -> addExpense(scanner);          // 지출 추가
-                case 3 -> calculateOverallSettlement(); // 정산 결과
-                case 4 -> viewDetails(scanner);         // 내역 조회
-                case 5 -> deleteMember(scanner);        // 참가자 삭제
-                case 6 -> deleteExpense(scanner);       // 내역 삭제
-                case 7 -> {                             // 종료
+                case 1:
+                    addMember(scanner);
+                    break;
+                case 2:
+                    addExpense(scanner);
+                    break;
+                case 3:
+                    calculateOverallSettlement();
+                    break;
+                case 4:
+                    viewDetails(scanner);
+                    break;
+                case 5:
+                    deleteMember(scanner);
+                    break;
+                case 6:
+                    deleteExpense(scanner);
+                    break;
+                case 7:
                     System.out.println("프로그램을 종료합니다.");
                     return;
-                }
-                default -> System.out.println("잘못된 입력입니다. 다시 시도해주세요.");
+                default:
+                    System.out.println("잘못된 입력입니다. 다시 시도해주세요.");
+                    break;
             }
         }
     }
@@ -75,7 +89,7 @@ public class TravelExpenseManager {
 
         expenses.add(new Expense(participant, category, amount, date));
         members.get(participant).updateBalance(amount);
-        System.out.println( participant + "님의 지출이 추가되었습니다.");
+        System.out.println(participant + "님의 지출이 추가되었습니다.");
     }
 
     private void calculateOverallSettlement() {
@@ -136,7 +150,6 @@ public class TravelExpenseManager {
     }
 
 
-
     private void viewDetails(Scanner scanner) {
         System.out.println("\n1) 개인별 내역 조회");
         System.out.println("2) 항목별 내역 조회");
@@ -146,10 +159,18 @@ public class TravelExpenseManager {
         scanner.nextLine();
 
         switch (choice) {
-            case 1 -> viewPersonalSummary(scanner);   // 개인별 내역 조회
-            case 2 -> calculateSettlementByCategory(scanner); // 항목별 내역 조회
-            case 3 -> viewExpensesByDate(scanner);    // 날짜별 내역 조회
-            default -> System.out.println("잘못된 입력입니다.");
+            case 1:
+                viewPersonalSummary(scanner);
+                break;
+            case 2:
+                calculateSettlementByCategory(scanner);
+                break;
+            case 3:
+                viewExpensesByDate(scanner);
+                break;
+            default:
+                System.out.println("잘못된 입력입니다.");
+                break;
         }
     }
 
@@ -174,7 +195,7 @@ public class TravelExpenseManager {
 
         List<Expense> filteredExpenses = expenses.stream()
                 .filter(expense -> expense.getCategory().equalsIgnoreCase(category))
-                .toList();
+                .collect(Collectors.toList());
 
         if (filteredExpenses.isEmpty()) {
             System.out.println("해당 항목의 지출 내역이 없습니다.");
@@ -197,7 +218,7 @@ public class TravelExpenseManager {
 
         List<Expense> filteredExpenses = expenses.stream()
                 .filter(expense -> expense.getDate().equals(date))
-                .toList();
+                .collect(Collectors.toList());
 
         if (filteredExpenses.isEmpty()) {
             System.out.println(date + "의 지출 내역이 없습니다.");

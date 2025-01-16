@@ -69,7 +69,6 @@ public class Main {
                 case 8:
                     SubjectManager subjectManager = new SubjectManager();
                     subjectManager.runMenu(scanner);
-
                     break;
                 case 9:
                     MovieManagement movieManagement = new MovieManagement();
