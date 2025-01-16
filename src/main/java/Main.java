@@ -1,7 +1,8 @@
 import phonebook.controller.PhoneBookController;
 import phonebook.service.PhoneBookService;
 import phonebook.view.PhoneBookView;
-import minju.MovieManagement; 
+import minju.MovieManagement;
+import sungyeop.BoardEntry;
 import yunsu.*;
 
 import java.io.IOException;
@@ -45,6 +46,8 @@ public class Main {
             case 4:
                 break;
             case 5:
+                BoardEntry boardEntry = new BoardEntry();
+                boardEntry.run();
                 break;
             case 6:
                 break;
