@@ -21,8 +21,11 @@ public class PhoneBookController {
 
         while (true) {
             phoneBookView.displayPhoneBook();
-            int choice = Integer.parseInt(br.readLine());
-            String input;
+            int choice = 0;
+            try {
+                choice = Integer.parseInt(br.readLine());
+            } catch (NumberFormatException ignored) {
+            }
             int index;
             switch (choice) {
             case 1:
@@ -34,18 +37,22 @@ public class PhoneBookController {
             case 3:
                 phoneBookView.displayContacts(phoneBookService.getAllContacts());
                 phoneBookView.displayDetailContactNotice();
-                input = br.readLine();
-                if (input == null) break;
-                index = Integer.parseInt(input);
+                try {
+                    index = Integer.parseInt(br.readLine());
+                } catch (NumberFormatException e) {
+                    break;
+                }
                 phoneBookService.removeContact(index);
                 break;
             case 4:
                 phoneBookView.displayContacts(phoneBookService.getAllContacts());
                 if (!phoneBookService.getAllContacts().isEmpty()) {
                     phoneBookView.displayDetailContactNotice();
-                    input = br.readLine();
-                    if (input == null) break;
-                    index = Integer.parseInt(input);
+                    try {
+                        index = Integer.parseInt(br.readLine());
+                    } catch (NumberFormatException e) {
+                        break;
+                    }
                     phoneBookView.displayContact(phoneBookService.getContactByIndex(index));
                 }
                 break;

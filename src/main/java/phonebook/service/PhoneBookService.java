@@ -17,8 +17,9 @@ public class PhoneBookService {
     }
 
     public void addContact(Contact contact) {
-        validateContact(contact);
-        contactList.add(contact);
+        if (validateContact(contact)) {
+            contactList.add(contact);
+        }
     }
 
     public void removeContact(int index) {
@@ -39,13 +40,16 @@ public class PhoneBookService {
         }).collect(Collectors.toList());
     }
 
-    private void validateContact(Contact contact) {
+    private boolean validateContact(Contact contact) {
         if (contact.getName() == null || contact.getNickName() == null || contact.getName().isEmpty() || contact.getNickName().isEmpty()) {
             System.out.println("Contact name or nickname is empty");
+            return false;
         }
         if (contact.getPhone() == null || contact.getPhone().isEmpty()) {
             System.out.println("Contact phone is empty");
+            return false;
         }
+        return true;
     }
 
     private boolean checkIndex(int index) {
