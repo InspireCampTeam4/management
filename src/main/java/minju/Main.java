@@ -45,7 +45,6 @@ public class Main {
                 case 8:
                     break;
                 case 9:
-                	System.out.println("영화 관리 시스템으로 이동합니다.");
                     movieManagement.runMenu(scanner); 
                     break;
                 case 10:

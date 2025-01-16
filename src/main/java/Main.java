@@ -1,6 +1,7 @@
 import phonebook.controller.PhoneBookController;
 import phonebook.service.PhoneBookService;
 import phonebook.view.PhoneBookView;
+import minju.MovieManagement; 
 
 import java.io.IOException;
 import java.util.Scanner;
@@ -51,6 +52,8 @@ public class Main {
             case 8:
                 break;
             case 9:
+            	MovieManagement movieManagement = new MovieManagement();
+            	movieManagement.runMenu(scanner); 
                 break;
             case 10:
                 break;
