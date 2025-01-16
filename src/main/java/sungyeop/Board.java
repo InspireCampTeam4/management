@@ -56,9 +56,108 @@ public class Board {
 
         if(input.matches("\\d+")) {
             int postNumber = Integer.parseInt(input);
-            posts.removeIf(post -> post.getPostNumber() == postNumber);
+            Post deleteTarget = posts.stream()
+                    .filter(post -> post.getPostNumber() == postNumber)
+                    .findFirst()
+                    .orElse(null);
+
+            if(deleteTarget != null) {
+                posts.remove(deleteTarget);
+                System.out.println("성공적으로 삭제되었습니다.");
+                System.out.println("삭제 : " + deleteTarget);
+                return;
+            } else{
+                System.out.println("삭제할 대상이 없습니다.");
+                return;
+            }
+        }
+
+        Post deleteTarget = posts.stream()
+                .filter(post -> post.getTitle().equals(input))
+                .findFirst()
+                .orElse(null);
+
+        if(deleteTarget != null) {
+            posts.remove(deleteTarget);
+            System.out.println("성공적으로 삭제되었습니다.");
+            System.out.println("삭제 : " + deleteTarget);
+            return;
+        } else {
+            System.out.println("삭제할 대상이 없습니다.");
+        }
+    }
+
+    public void viewOnePost(Scanner scanner){
+        System.out.print("확인하고 싶은 포스트명 혹은 포스트 번호를 입력해주세요 : ");
+        String input = scanner.nextLine();
+
+        if(input.matches("\\d+")) {
+            int postNumber = Integer.parseInt(input);
+            Post target = posts.stream()
+                    .filter(post -> post.getPostNumber() == postNumber)
+                    .findFirst()
+                    .orElse(null);
+            if(target != null){
+                printPost(target);
+                postStatistics.put(target, postStatistics.get(target) + 1);
+                return;
+            }
+            System.out.println("해당 포스트가 없습니다.");
             return;
         }
-        posts.removeIf(post -> post.getTitle().equals(input));
+
+        Post target = posts.stream()
+                .filter(post -> post.getTitle().equals(input))
+                .findFirst()
+                .orElse(null);
+
+        if(target != null){
+            printPost(target);
+            postStatistics.put(target, postStatistics.get(target) + 1);
+            return;
+        }
+        System.out.println("해당 포스트가 없습니다.");
+    }
+
+    public void viewAllStatistics() {
+        postStatistics.forEach((key, value) -> printStatistics(key, value));
+    }
+
+    public void printStatistics(Post post, int view) {
+        System.out.println("#########");
+        System.out.println("Post # " + post.getPostNumber());
+        System.out.println("포스트 제목 : " + post.getTitle());
+        System.out.println("조회수 : " + view);
+        System.out.println("#########\n");
+    }
+
+    public void viewOneStatistics(Scanner scanner){
+        System.out.print("검색하고 싶은 포스트의 제목 혹은 번호를 입력해주세요 : ");
+        String input = scanner.nextLine();
+
+        if(input.matches("\\d+")) {
+            int postNumber = Integer.parseInt(input);
+            Map.Entry<Post, Integer> find = postStatistics.entrySet().stream()
+                    .filter(post -> post.getKey().getPostNumber() == postNumber)
+                    .findFirst()
+                    .orElse(null);
+
+            if(find != null){
+                printStatistics(find.getKey(), find.getValue());
+                return;
+            }
+            System.out.println("대상이 없습니다.");
+            return;
+        }
+
+        Map.Entry<Post, Integer> find = postStatistics.entrySet().stream()
+                .filter(post -> post.getKey().getTitle().equals(input))
+                .findFirst()
+                .orElse(null);
+        if(find != null){
+            printStatistics(find.getKey(), find.getValue());
+            return;
+        }
+        System.out.println("대상이 없습니다.");
     }
 }
