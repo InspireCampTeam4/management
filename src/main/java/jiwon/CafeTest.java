@@ -29,8 +29,7 @@ public class CafeTest {
         System.out.print("메뉴(숫자)를 선택하세요: ");
     }
 	
-	//startCafeProgram()
-	public static void main(String[] args){
+	public void startCafeProgram(){
 		MenuManagement cafe = new MenuManagement();
 		Scanner scanner = new Scanner(System.in);
 		
