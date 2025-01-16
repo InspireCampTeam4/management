@@ -1,28 +1,10 @@
-<<<<<<< HEAD
-import seulah.TravelExpenseManager; // seulah 패키지의 클래스 임포트
-import java.util.Scanner;
-
-public class Main {
-    public static void main(String[] args) {
-        // Scanner 객체 생성 (사용자 입력 처리)
-        Scanner scanner = new Scanner(System.in);
-
-        // TravelExpenseManager 객체 생성
-        TravelExpenseManager manager = new TravelExpenseManager();
-
-        // TravelExpenseManager 실행
-        manager.run(scanner);
-
-        // Scanner 리소스 해제
-        scanner.close();
-    }
-=======
 import phonebook.controller.PhoneBookController;
 import phonebook.service.PhoneBookService;
 import phonebook.view.PhoneBookView;
 import minju.MovieManagement;
 import sungyeop.BoardEntry;
 import yunsu.*;
+import seulah.TravelExpenseManager;
 
 import java.io.IOException;
 import java.util.Scanner;
@@ -53,6 +35,8 @@ public class Main {
             scanner.nextLine();
             switch (choice) {
             case 1:
+            	TravelExpenseManager manager = new TravelExpenseManager()
+            	manager.run(scanner);
                 break;
             case 2:
                 PhoneBookService phoneBookService = new PhoneBookService();
@@ -92,5 +76,4 @@ public class Main {
             }
         }
     }
->>>>>>> main
 }
