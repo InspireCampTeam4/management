@@ -7,7 +7,6 @@ import subin.TaxiPodApplication;
 import sungyeop.BoardEntry;
 import yunsu.*;
 import seulah.TravelExpenseManager;
-import minseok.*;
 
 import java.io.IOException;
 import java.util.InputMismatchException;
@@ -54,8 +53,6 @@ public class Main {
                     phoneBookController.run();
                     break;
                 case 3:
-                	WishlistController wishlist = new WishlistController();
-                	wishlist.run();
                     break;
                 case 4:
                     break;
@@ -72,7 +69,6 @@ public class Main {
                 case 8:
                     SubjectManager subjectManager = new SubjectManager();
                     subjectManager.runMenu(scanner);
-
                     break;
                 case 9:
                     MovieManagement movieManagement = new MovieManagement();
