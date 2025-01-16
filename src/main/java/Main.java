@@ -2,6 +2,7 @@ import phonebook.controller.PhoneBookController;
 import phonebook.service.PhoneBookService;
 import phonebook.view.PhoneBookView;
 import minju.MovieManagement; 
+import yunsu.*;
 
 import java.io.IOException;
 import java.util.Scanner;
@@ -16,7 +17,7 @@ public class Main {
         System.out.println("5. 정성엽: 게시판");
         System.out.println("6. 정주영: 재고 관리 시스템");
         System.out.println("7. 조수빈: 택시팟 관리 시스템");
-        System.out.println("8. 조윤수: ");
+        System.out.println("8. 조윤수: 성적 관리 시스템");
         System.out.println("9. 채민주: 영화 관리 시스템");
         System.out.println("10. 채지원: 카페 메뉴 관리 시스템");
         System.out.println("11. 종료");
@@ -50,6 +51,9 @@ public class Main {
             case 7:
                 break;
             case 8:
+                SubjectManager subjectManager = new SubjectManager();
+                subjectManager.runMenu(scanner);
+
                 break;
             case 9:
             	MovieManagement movieManagement = new MovieManagement();
