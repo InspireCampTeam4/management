@@ -37,7 +37,7 @@ public class WishlistController {
 					case 5:
 						// 종료
 						System.out.println("위시리스트 프로그램을 종료합니다.");
-						break;
+						return;
 					default:
 						System.out.println("잘못된 입력입니다.");
 				}
