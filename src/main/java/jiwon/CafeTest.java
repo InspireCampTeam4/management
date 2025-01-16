@@ -17,26 +17,25 @@ public class CafeTest {
 	
 	// 전체 메뉴, 음료, 음식 출력 때만 출력
 	public static void printSubOption() {
-        System.out.println("\n<<<<<정렬 방법>>>>>");
-        System.out.println("1. 높은 가격순");
-        System.out.println("2. 낮은 가격순");
-        System.out.println("3. 고칼로리순");
-        System.out.println("4. 저칼로리순");
+        System.out.println("\n****정렬 방법****");
+        System.out.println(">>>>1. 높은 가격순");
+        System.out.println(">>>>2. 낮은 가격순");
+        System.out.println(">>>>3. 고칼로리순");
+        System.out.println(">>>>4. 저칼로리순");
         //단, 카테고리별 조회는 다른 정렬 방식을 지원하지 않는다.
-        System.out.println("5. 카테고리별"); 
-        System.out.println("6. 이전");
-        System.out.println("<<<<<<<<>>>>>>>>");
+        System.out.println(">>>>5. 카테고리별"); 
+        System.out.println(">>>>6. 이전");
+        System.out.println("***************");
         System.out.print("메뉴(숫자)를 선택하세요: ");
     }
 	
-	public void startCafeProgram(){
+	public void startCafeProgram(Scanner scanner){
 		MenuManagement cafe = new MenuManagement();
-		Scanner scanner = new Scanner(System.in);
 		
 		// 초기 더미 데이터 추가
         cafe.addDummyData();
-		
-		while(true) {
+        boolean running = true;
+		while(running) {
 			//전체 메뉴 출력
 			printOption();
 			
@@ -68,7 +67,7 @@ public class CafeTest {
                 break;
             case 7:
                 System.out.println("프로그램을 종료합니다.");
-                scanner.close();
+                running = false;
                 return;
             default:
                 System.out.println("잘못된 입력입니다.");

@@ -13,6 +13,8 @@ import java.io.IOException;
 import java.util.InputMismatchException;
 import java.util.Scanner;
 
+import jiwon.CafeTest;
+
 public class Main {
     public static void printApplicationMenu() {
         System.out.println("\n: 사용할 응용프로그램을 선택하세요.");
@@ -78,6 +80,8 @@ public class Main {
                     movieManagement.runMenu(scanner);
                     break;
                 case 10:
+                	CafeTest cafeTest = new CafeTest();
+                	cafeTest.startCafeProgram(scanner);
                     break;
                 case 11:
                     System.out.println("프로그램을 종료합니다.");
