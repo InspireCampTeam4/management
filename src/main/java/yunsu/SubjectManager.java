@@ -20,7 +20,7 @@ public class SubjectManager {
     public void searchSubject(String name) {
         boolean found = false;
         for (Subject subject : subjects) {
-            if (subject.getName().equalsIgnoreCase(name)) {
+            if (subject.getName().equalsIgnoreCase(name.trim())) {
                 System.out.println(subject);
                 found = true;
                 break;
