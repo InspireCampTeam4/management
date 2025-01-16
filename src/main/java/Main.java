@@ -1,3 +1,4 @@
+import juyoung.InventoryView;
 import phonebook.controller.PhoneBookController;
 import phonebook.service.PhoneBookService;
 import phonebook.view.PhoneBookView;
@@ -6,6 +7,7 @@ import sungyeop.BoardEntry;
 import yunsu.*;
 
 import java.io.IOException;
+import java.util.InputMismatchException;
 import java.util.Scanner;
 
 public class Main {
@@ -27,49 +29,54 @@ public class Main {
 
     public static void main(String[] args) throws IOException {
         Scanner scanner = new Scanner(System.in);
+        int choice;
 
         while (true) {
             printApplicationMenu();
-            int choice = scanner.nextInt();
+            try {
+                choice = scanner.nextInt();
+            } catch (InputMismatchException e) {
+                choice = 0;
+            }
             scanner.nextLine();
             switch (choice) {
-            case 1:
-                break;
-            case 2:
-                PhoneBookService phoneBookService = new PhoneBookService();
-                PhoneBookView phoneBookView = new PhoneBookView();
-                PhoneBookController phoneBookController = new PhoneBookController(phoneBookService, phoneBookView);
-                phoneBookController.run();
-                break;
-            case 3:
-                break;
-            case 4:
-                break;
-            case 5:
-                BoardEntry boardEntry = new BoardEntry();
-                boardEntry.run();
-                break;
-            case 6:
-                break;
-            case 7:
-                break;
-            case 8:
-                SubjectManager subjectManager = new SubjectManager();
-                subjectManager.runMenu(scanner);
-
-                break;
-            case 9:
-            	MovieManagement movieManagement = new MovieManagement();
-            	movieManagement.runMenu(scanner); 
-                break;
-            case 10:
-                break;
-            case 11:
-                System.out.println("프로그램을 종료합니다.");
-                scanner.close();
-                return;
-            default:
-                System.out.println("잘못된 입력입니다.");
+                case 1:
+                    break;
+                case 2:
+                    PhoneBookService phoneBookService = new PhoneBookService();
+                    PhoneBookView phoneBookView = new PhoneBookView();
+                    PhoneBookController phoneBookController = new PhoneBookController(phoneBookService, phoneBookView);
+                    phoneBookController.run();
+                    break;
+                case 3:
+                    break;
+                case 4:
+                    break;
+                case 5:
+                    BoardEntry boardEntry = new BoardEntry();
+                    boardEntry.run();
+                    break;
+                case 6:
+                    InventoryView.enter(scanner);
+                    break;
+                case 7:
+                    break;
+                case 8:
+                    SubjectManager subjectManager = new SubjectManager();
+                    subjectManager.runMenu(scanner);
+                    break;
+                case 9:
+                    MovieManagement movieManagement = new MovieManagement();
+                    movieManagement.runMenu(scanner);
+                    break;
+                case 10:
+                    break;
+                case 11:
+                    System.out.println("프로그램을 종료합니다.");
+                    scanner.close();
+                    return;
+                default:
+                    System.out.println("잘못된 입력입니다.");
             }
         }
     }
