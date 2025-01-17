@@ -12,27 +12,25 @@ import java.util.Scanner;
 import static sunwoo.service.DiscussionService.getItem;
 
 public class CLIView {
-    private static String page1CLI = """
-             밴드 관리 시스템에 오신 것을 환영합니다. 
-             로그인 후 서비스를 이용해보세요. 이용하실 메뉴의 번호를 입력하세요.
-             -------------------------------------
-             1. 로그인
-             2. 회원가입
-             3. 시스템 종료
-            --------------------------------------
-            Select Menu:
-             """;
+    private static String page1CLI = 
+        "밴드 관리 시스템에 오신 것을 환영합니다. \n" +
+        "로그인 후 서비스를 이용해보세요. 이용하실 메뉴의 번호를 입력하세요.\n" +
+        "-------------------------------------\n" +
+        "1. 로그인\n" +
+        "2. 회원가입\n" +
+        "3. 시스템 종료\n" +
+        "--------------------------------------\n" +
+        "Select Menu:\n";
 
-    private static String page2CLI = """
-             메뉴 아이템을 선택하세요
-             -------------------------------------
-             1. 선곡회의
-             2. 선곡회의에 곡 추가하기
-             3. 밴드 멤버 조회
-             4. 시스템 종료
-            --------------------------------------
-            Select Menu:
-             """;
+    private static String page2CLI = 
+        "메뉴 아이템을 선택하세요\n" +
+        "-------------------------------------\n" +
+        "1. 선곡회의\n" +
+        "2. 선곡회의에 곡 추가하기\n" +
+        "3. 밴드 멤버 조회\n" +
+        "4. 시스템 종료\n" +
+        "--------------------------------------\n" +
+        "Select Menu:\n";
 
     public static void cliMain(Scanner scanner) throws IOException {
         AsciiArtPrinter.printAsciiArt();
@@ -55,7 +53,6 @@ public class CLIView {
                 break;
             case 3:
                 System.out.println("Bye");
-                scanner.close();
                 break;
             default:
                 System.out.println("잘못된 입력입니다. 다시 선택하세요");

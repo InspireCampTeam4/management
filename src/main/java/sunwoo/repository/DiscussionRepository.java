@@ -7,6 +7,7 @@ import sunwoo.domain.DiscussionItem;
 import sunwoo.domain.User;
 
 import java.util.*;
+import java.util.stream.Collectors;
 
 public class DiscussionRepository {
 
@@ -20,7 +21,7 @@ public class DiscussionRepository {
     public static List<DiscussionItem> findAllDiscussionItem(Band band){
         return discussionItems.stream()
                 .filter(d->d.getBand().equals(band))
-                .toList();
+                .collect(Collectors.toList());
     };
     public static Optional<DiscussionItem> findDiscussionItemById(String discussionItemId){
         return discussionItems.stream().filter(d -> d.getId().equals(discussionItemId)).findFirst();
