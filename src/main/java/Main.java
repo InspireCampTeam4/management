@@ -6,6 +6,7 @@ import phonebook.view.PhoneBookView;
 import minju.MovieManagement;
 import subin.TaxiPodApplication;
 import sungyeop.BoardEntry;
+import sunwoo.BandManagementApplication;
 import yunsu.*;
 import seulah.TravelExpenseManager;
 
@@ -60,6 +61,8 @@ public class Main {
                     wishlist.run();
                     break;
                 case 4:
+                    BandManagementApplication bandManagementApplication = new BandManagementApplication();
+                    bandManagementApplication.run(scanner);
                     break;
                 case 5:
                     BoardEntry boardEntry = new BoardEntry();

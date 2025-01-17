@@ -34,14 +34,13 @@ public class CLIView {
             Select Menu:
              """;
 
-    public static void cliMain() throws IOException {
+    public static void cliMain(Scanner scanner) throws IOException {
         AsciiArtPrinter.printAsciiArt();
-        cliStart();
+        cliStart(scanner);
 
     }
 
-    public static void cliStart() throws IOException {
-        Scanner scanner = new Scanner(System.in);
+    public static void cliStart(Scanner scanner) throws IOException {
 
         System.out.println(page1CLI);
 
